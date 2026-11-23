@@ -1,0 +1,35 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Exercise types{% endblock %}
+
+{% block body %}
+    <h1>Exercise types</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for exercise_type in exercise_types %}
+            <tr>
+                <td>{{ exercise_type.id }}</td>
+                <td>{{ exercise_type.name }}</td>
+                <td>
+                    <a href="{{ path('app_exercise_type_show', {'id': exercise_type.id}) }}">details</a>
+                    <a href="{{ path('app_exercise_type_edit', {'id': exercise_type.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="3">No data.</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_exercise_type_new') }}">Add</a>
+{% endblock %}
